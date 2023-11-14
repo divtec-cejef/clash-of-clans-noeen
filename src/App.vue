@@ -92,10 +92,6 @@ onMounted(() => {
       </li>
     </ul>
   </main>
-
-  <footer>
-    &copy; 2023 - Supercell.com
-  </footer>
 </template>
 
 <style scoped lang="sass">
