@@ -1,10 +1,14 @@
 <script setup>
+/* Propriétés */
 defineProps({
   troupe: {
     type: Object,
     required: true
   }
 })
+
+/* Evénements */
+const emit = defineEmits(["former"])
 </script>
 
 <template>
@@ -26,7 +30,7 @@ defineProps({
     <h2 class="name">{{ troupe.nom }}</h2>
     <button
         :style="`background-color: ${troupe.couleur};`"
-        @click="formerTroupe"
+        @click="emit('former', troupe)"
     > Former
       <img src="/img/piece-or.png" alt="Former">
     </button>

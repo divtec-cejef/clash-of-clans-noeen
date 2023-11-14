@@ -54,7 +54,10 @@ function formerTroupe(troupe) {
           v-for="troupe in troupes"
           :key="troupe.id"
       >
-        <troupe-carte :troupe="troupe" />
+        <troupe-carte
+            :troupe="troupe"
+            @former="formerTroupe"
+        />
       </li>
     </ul>
   </main>
