@@ -2,9 +2,16 @@
 // Cheat Sheet: https://steve-fallet.notion.site/Vue-3-script-setup-Cheat-Sheet-b12192ceae244ecda65f771579ca02bc
 import {ref, onMounted} from 'vue'
 import PageFooter from "@/components/PageFooter.vue";
+import PageTopBar from "@/components/PageTopBar.vue";
 
 // Tableau des troupes
 const troupes = ref([])
+
+// Tableau des troupes formées
+const troupesFormees = ref([])
+
+// Total d'or
+const totalOr = ref(20000)
 
 // Cycle de vie du composant
 // Quand le composant est monté, on va chercher les données
@@ -15,20 +22,21 @@ onMounted(() => {
         troupes.value = data
       })
 })
+
+
+/* Méthodes */
+function formerTroupe(troupe) {
+  if (totalOr.value < troupe.cout) {
+    alert("Vous n'avez pas assez d'or mon seigneur !")
+    return
+  }
+  totalOr.value -= troupe.cout
+  troupesFormees.value.push(troupe)
+}
 </script>
 
 <template>
-  <aside class="solde-or">
-    <div>
-      <img src="/img/piece-or-note.jpg" alt="Solde Or">
-      20 000 pièces d'or
-    </div>
-    <div>
-      <img src="/img/troupes-icon.png" alt="Troupes">
-      0 troupes formées
-    </div>
-  </aside>
-
+<page-top-bar :or="totalOr" :troupes="troupesFormees"/>
   <header>
     <h1>
       <img src="/img/clash-of-clans-logo.webp" alt="Logo Clash of Clans">
@@ -63,6 +71,7 @@ onMounted(() => {
           <h2 class="name">{{ troupe.nom }}</h2>
           <button
               :style="`background-color: ${troupe.couleur};`"
+              @click="formerTroupe"
           > Former
             <img src="/img/piece-or.png" alt="Former">
           </button>
