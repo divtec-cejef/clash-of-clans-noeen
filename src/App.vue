@@ -1,6 +1,7 @@
 <script setup>
 // Cheat Sheet: https://steve-fallet.notion.site/Vue-3-script-setup-Cheat-Sheet-b12192ceae244ecda65f771579ca02bc
 import {ref, onMounted} from 'vue'
+import PageFooter from "@/components/PageFooter.vue";
 
 // Tableau des troupes
 const troupes = ref([])
@@ -63,7 +64,8 @@ onMounted(() => {
           <button
               :style="`background-color: ${troupe.couleur};`"
           > Former
-            <img src="/img/piece-or.png" alt="Former"></button>
+            <img src="/img/piece-or.png" alt="Former">
+          </button>
           <p class="description">{{ troupe.description }}</p>
           <footer>
             <div
@@ -92,6 +94,8 @@ onMounted(() => {
       </li>
     </ul>
   </main>
+
+  <page-footer />
 </template>
 
 <style scoped lang="sass">
