@@ -15,7 +15,7 @@ defineProps({
   <aside class="solde-or">
     <div>
       <img src="/img/piece-or-note.jpg" alt="Solde Or">
-      {{ or }} pièces d'or
+      {{ or.toLocaleString('fr-CH') }} pièces d'or
     </div>
     <div>
       <img src="/img/troupes-icon.png" alt="Troupes">
