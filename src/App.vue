@@ -43,54 +43,71 @@ const troupes = ref([
 <template>
   <aside class="solde-or">
     <div>
-      <img src="img/piece-or-note.jpg" alt="Solde Or">
+      <img src="/img/piece-or-note.jpg" alt="Solde Or">
       20 000 pièces d'or
     </div>
     <div>
-      <img src="img/troupes-icon.png" alt="Troupes">
+      <img src="/img/troupes-icon.png" alt="Troupes">
       0 troupes formées
     </div>
   </aside>
+
   <header>
     <h1>
-      <img src="img/clash-of-clans-logo.webp" alt="Logo Clash of Clans">
+      <img src="/img/clash-of-clans-logo.webp" alt="Logo Clash of Clans">
     </h1>
     <p class="description">
       Construire un village,
       former un clan et participer à des guerres de clans épiques !
     </p>
   </header>
+
   <main>
     <ul class="cartes">
-      <li>
+      <li
+          v-for="troupe in troupes"
+          :key="troupe.id"
+      >
         <article>
-          <header style="background: linear-gradient(60deg,#3B3B3B 0%, #EE5487 100%);">
-            <img src="https://cocapi.divtec.me/img/archer.png" alt="Archer">
+          <header
+              :style="`background: linear-gradient(60deg,#3B3B3B 0%, ${troupe.couleur} 100%);`"
+          >
+            <img
+                :src="troupe.image"
+                :alt="troupe.nom"
+            >
           </header>
-          <div class="level" style="color: #EE5487;">
-            Niveau 3
+          <div
+              class="level"
+              :style="`color: ${troupe.couleur};`">
+            Niveau {{ troupe.niveau }}
           </div>
-          <h2 class="name">Archer</h2>
-          <button style="background-color: #EE5487;"> Former
-            <img src="img/piece-or.png" alt="Former"></button>
-          <p class="description">Les archers sont des tireurs d'élite
-            qui attaquent à distance. Ils sont rapides et bon marché
-            à former, mais ils sont faibles en mêlée et doivent être
-            protégés.</p>
+          <h2 class="name">{{ troupe.nom }}</h2>
+          <button
+              :style="`background-color: ${troupe.couleur};`"
+          > Former
+            <img src="/img/piece-or.png" alt="Former"></button>
+          <p class="description">{{ troupe.description }}</p>
           <footer>
-            <div class="training"
-                 style="background-color: #EE5487;">
-              <div>25<sup>sec</sup></div>
+            <div
+                class="training"
+                :style="`background-color: ${troupe.couleur};`"
+            >
+              <div>{{ troupe.formation }}<sup>sec</sup></div>
               <div>Formation</div>
             </div>
-            <div class="speed"
-                 style="background-color: #EE5487;">
-              <div>24</div>
+            <div
+                class="speed"
+                :style="`background-color: ${troupe.couleur};`"
+            >
+              <div>{{ troupe.vitesse }}</div>
               <div>Vitesse</div>
             </div>
-            <div class="cost"
-                 style="background-color: #EE5487;">
-              <div>200</div>
+            <div
+                class="cost"
+                :style="`background-color: ${troupe.couleur};`"
+            >
+              <div>{{ troupe.cout }}</div>
               <div>Coût</div>
             </div>
           </footer>
@@ -98,6 +115,7 @@ const troupes = ref([
       </li>
     </ul>
   </main>
+
   <footer>
     &copy; 2023 - Supercell.com
   </footer>
