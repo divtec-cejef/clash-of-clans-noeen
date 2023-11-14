@@ -4,6 +4,10 @@ defineProps({
   troupe: {
     type: Object,
     required: true
+  },
+  or: {
+    type: Number,
+    required: true
   }
 })
 
@@ -29,6 +33,7 @@ const emit = defineEmits(["former"])
     </div>
     <h2 class="name">{{ troupe.nom }}</h2>
     <button
+        :disabled="or < troupe.cout"
         :style="`background-color: ${troupe.couleur};`"
         @click="emit('former', troupe)"
     > Former

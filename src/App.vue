@@ -56,6 +56,7 @@ function formerTroupe(troupe) {
       >
         <troupe-carte
             :troupe="troupe"
+            :or="totalOr"
             @former="formerTroupe"
         />
       </li>
