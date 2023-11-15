@@ -4,6 +4,7 @@ import {ref, onMounted} from 'vue'
 import PageFooter from "@/components/PageFooter.vue";
 import PageTopBar from "@/components/PageTopBar.vue";
 import TroupeCarte from "@/components/TroupeCarte.vue";
+import PageHeader from "@/components/PageHeader.vue";
 
 // Tableau des troupes
 const troupes = ref([])
@@ -37,16 +38,9 @@ function formerTroupe(troupe) {
 </script>
 
 <template>
-<page-top-bar :or="totalOr" :troupes="troupesFormees"/>
-  <header>
-    <h1>
-      <img src="/img/clash-of-clans-logo.webp" alt="Logo Clash of Clans">
-    </h1>
-    <p class="description">
-      Construire un village,
-      former un clan et participer à des guerres de clans épiques !
-    </p>
-  </header>
+  <page-top-bar :or="totalOr" :troupes="troupesFormees"/>
+
+  <page-header/>
 
   <main>
     <ul class="cartes">
@@ -63,7 +57,8 @@ function formerTroupe(troupe) {
     </ul>
   </main>
 
-  <page-footer />
+  <page-footer/>
+
 </template>
 
 <style scoped lang="sass">
